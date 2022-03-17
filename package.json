@@ -1,5 +1,6 @@
 {
   "name": "@curiosbasant/react-compooks",
+  "description": "Curios's frequently used react hooks collection.",
   "version": "0.1.0",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -22,8 +23,20 @@
     "tslib": "^2.3.1",
     "typescript": "^4.6.2"
   },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/CuriosBasant"
+  "keywords": [
+    "react",
+    "hooks",
+    "components",
+    "curios"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CuriosBasant/react-compooks.git"
   },
+  "bugs": {
+    "url": "https://github.com/CuriosBasant/react-compooks/issues"
+  },
+  "homepage": "https://github.com/CuriosBasant/react-compooks#readme",
+  "author": "CuriosBasant <basantbrpl@gmail.com>",
   "license": "MIT"
 }
