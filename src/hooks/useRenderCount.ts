@@ -8,5 +8,5 @@ export default function useRenderCount() {
   function reset() {
     count.current = 1
   }
-  return [count.current, reset]
+  return [count.current, reset] as const
 }

@@ -8,7 +8,7 @@ export default function useValidatorState<T>(
   const [state, setState] = useState(initialValue)
   const [isValid, setIsValid] = useState(() => validationFunc(state))
 
-  const onChange = useCallback(
+  const changeState = useCallback(
     (nextState: T | ((prev: T) => T)) => {
       const value = typeof nextState == "function" ? (<(prev: T) => T>nextState)(state) : nextState
       const isValid = validationFunc(value)
@@ -18,5 +18,5 @@ export default function useValidatorState<T>(
     [validationFunc]
   )
 
-  return [state, onChange, isValid]
+  return [state, changeState, isValid] as const
 }

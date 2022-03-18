@@ -27,5 +27,5 @@ function useStorage<T>(key: string, defaultValue: T, storageObject: Storage) {
     setValue(undefined)
   }, [])
 
-  return [value, setValue, remove]
+  return [value, setValue, remove] as const
 }
