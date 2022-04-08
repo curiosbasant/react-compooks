@@ -16,7 +16,11 @@ OR
 npm install @curiosbasant/react-compooks
 ```
 
-## useDebugInfo
+## React Hooks
+
+These hooks can work on all react applications
+
+### useDebugInfo
 
 ```jsx
 function ExampleComponent() {
@@ -27,7 +31,7 @@ function ExampleComponent() {
 }
 ```
 
-## useEffectOnce
+### useEffectOnce
 
 Same as react's `useEffect`, but only run once the component mounts. _It doesn't requires any dependencies._
 
@@ -43,7 +47,7 @@ function ExampleComponent() {
 }
 ```
 
-## useFunctionalReducer
+### useFunctionalReducer
 
 ```jsx
 const ActionMap = {
@@ -71,7 +75,7 @@ function ExampleComponent() {
 }
 ```
 
-## useRenderCount
+### useRenderCount
 
 Tracks the number of times, the component has been rerendered since last reset.
 
@@ -87,9 +91,9 @@ function ExampleComponent() {
 }
 ```
 
-## useToggle
+### useToggle
 
-Provides a bool value _(default false)_ that can be toggled, by 2nd provided function.
+Provides a bool value _(default false)_ that can be toggled.
 
 ```jsx
 function ExampleComponent() {
@@ -103,18 +107,65 @@ function ExampleComponent() {
 }
 ```
 
-## useValidatorState
+### useValidatorState
 
-Provides a bool value _(default false)_ that can be toggled, by 2nd provided function.
+Validates a state before updating it.
 
 ```jsx
 function ExampleComponent() {
-  const [bool, toggleBool] = useValidatorState()
-  return (
-    <div>
-      <span>Bool Value: {bool}</span>
-      <button onClick={() => toggleBool()}>Toggle Bool</button>
-    </div>
-  )
+  const [value, setValue, isValid] = useValidatorState(5, (val) => val < 10)
+  return // JSX
+}
+```
+
+## React Web Hooks
+
+These hooks only works in browsers
+
+### useLocalStorage (and useSessionStorage)
+
+Tries to get a value from browser's `localstorage`, if it doesn't exist returns the optionally provided default value, otherwise returns `null`.
+The third return value, completely removes the key from localstrorage
+
+```jsx
+function ExampleComponent() {
+  const [userId, setUserId, removeUserId] = useLocalStorage("userId", "default-id")
+  return // JSX
+}
+```
+
+### useEventListener
+
+Listens to browser's dom events, on the optinally provided `element-ref` or `window` otherwise.
+
+```jsx
+function ExampleComponent() {
+  const divRef = useRef()
+  useEventListener("mouseover", () => {}, divRef)
+  return <div ref={divRef}>Hover me!</div>
+}
+```
+
+### useTimeout
+
+Uses the `setTimeout` function, to run the callback after a certain amount of time. Also returns two methods viz. `reset` (to reset the time) and `clear` (to cancel)
+
+```jsx
+function ExampleComponent() {
+  const { reset, clear } = useTimeout(() => {}, 1000)
+
+  return // JSX
+}
+```
+
+### useOnlineStatus
+
+Uses the `useEventListener` hook, to detect if user has internet connectivity.
+
+```jsx
+function ExampleComponent() {
+  const isOnline = useOnlineStatus()
+
+  return // JSX
 }
 ```
