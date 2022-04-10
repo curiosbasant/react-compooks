@@ -23,3 +23,7 @@ yarn-error.log*
 delete_me
 private
 dist
+
+# lock files
+package-lock.json
+yarn.lock
