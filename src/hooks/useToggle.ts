@@ -4,7 +4,7 @@ export default function useToggle(defaultValue = false) {
   const [value, setValue] = useState(defaultValue)
 
   function toggleValue(forceSet?: boolean) {
-    setValue((currentValue) => (typeof forceSet === "boolean" ? forceSet : !currentValue))
+    typeof forceSet == "boolean" ? setValue(forceSet) : setValue((currentValue) => !currentValue)
   }
 
   return [value, toggleValue] as const

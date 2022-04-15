@@ -1,4 +1,4 @@
-import produce, { Draft } from "immer"
+import produce from "immer"
 import { useMemo, useReducer } from "react"
 
 type RemoveFirstFromTuple<T> = T extends [infer F, ...infer R] ? R : never

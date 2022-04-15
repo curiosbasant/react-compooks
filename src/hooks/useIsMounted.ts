@@ -11,5 +11,5 @@ export default function useIsMounted() {
     }
   }, [])
 
-  return mounted
+  return mounted.current
 }
