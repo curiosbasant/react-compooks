@@ -1,20 +1,20 @@
 import { useCallback, useEffect, useState } from "react"
 
-export function useLocalStorage<T>(key: string, defaultValue: T) {
+export function useLocalStorage<T>(key: string, defaultValue: T | (() => T)) {
   return useStorage(key, defaultValue, window.localStorage)
 }
 
-export function useSessionStorage<T>(key: string, defaultValue: T) {
+export function useSessionStorage<T>(key: string, defaultValue: T | (() => T)) {
   return useStorage(key, defaultValue, window.sessionStorage)
 }
 
-function useStorage<T>(key: string, defaultValue: T, storageObject: Storage) {
+function useStorage<T>(key: string, defaultValue: T | (() => T), storageObject: Storage) {
   const [value, setValue] = useState(() => {
     const jsonValue = storageObject.getItem(key)
     return jsonValue != null
-      ? JSON.parse(jsonValue)
+      ? (JSON.parse(jsonValue) as T)
       : typeof defaultValue === "function"
-      ? defaultValue()
+      ? (defaultValue as () => T)()
       : defaultValue
   })
 
@@ -24,7 +24,7 @@ function useStorage<T>(key: string, defaultValue: T, storageObject: Storage) {
   }, [key, value, storageObject])
 
   const remove = useCallback(() => {
-    setValue(undefined)
+    setValue(typeof defaultValue === "function" ? (defaultValue as () => T)() : defaultValue)
   }, [])
 
   return [value, setValue, remove] as const
