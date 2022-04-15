@@ -1,7 +1,7 @@
 {
   "name": "@curiosbasant/react-compooks",
   "description": "Curios's frequently used react hooks collection.",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "files": [
