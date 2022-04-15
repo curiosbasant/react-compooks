@@ -1,7 +1,7 @@
 {
   "name": "@curiosbasant/react-compooks",
   "description": "Curios's frequently used react hooks collection.",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "files": [
@@ -9,11 +9,13 @@
   ],
   "types": "dist/index.d.ts",
   "scripts": {
-    "rollup": "rollup -c"
+    "rollup": "rollup -c",
+    "prepublishOnly": "yarn rollup"
   },
   "peerDependencies": {
-    "immer": "^9.0.12",
-    "react": "^16.8.0 || ^17.0.2"
+    "immer": "9.0.11",
+    "nookies": "^2.5.2",
+    "react": "16 || 17 || 18"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^21.0.2",
