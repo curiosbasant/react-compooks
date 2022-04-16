@@ -7,12 +7,14 @@ function useEventListener<K extends keyof WindowEventMap>(
 function useEventListener<K extends keyof WindowEventMap, T extends Document | HTMLElement | null>(
   eventType: K,
   listener: (ev: WindowEventMap[K]) => any,
-  element: T
+  element: T,
+  options?: boolean | AddEventListenerOptions
 ): void
 function useEventListener<K extends keyof WindowEventMap>(
   eventType: K,
   listener: (ev: WindowEventMap[K]) => any,
-  element = window
+  element = typeof window == "undefined" ? null : window,
+  options: boolean | AddEventListenerOptions | undefined = undefined
 ) {
   const callbackRef = useRef(listener)
 
@@ -23,9 +25,9 @@ function useEventListener<K extends keyof WindowEventMap>(
   useEffect(() => {
     if (element == null) return
     const handler = (e: WindowEventMap[K]) => callbackRef.current(e)
-    element.addEventListener(eventType, handler)
+    element.addEventListener(eventType, handler, options)
 
-    return () => element.removeEventListener(eventType, handler)
+    return () => element.removeEventListener(eventType, handler, options)
   }, [eventType, element])
 }
 

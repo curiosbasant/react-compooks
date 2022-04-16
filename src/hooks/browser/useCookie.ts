@@ -1,13 +1,13 @@
 import nookies from "nookies"
 import { useState } from "react"
 
-type CookieReturnType<T> = [T, (nv: T) => void, () => void]
+type HookReturnType<T> = [T, (nv: T) => void, () => void]
 
 function useCookie<T extends { toString: Function }>(
   key: string,
   defaultValue: T
-): CookieReturnType<T>
-function useCookie<T extends { toString: Function }>(key: string): CookieReturnType<T | null>
+): HookReturnType<T>
+function useCookie<T extends { toString: Function }>(key: string): HookReturnType<T | null>
 
 function useCookie<T extends { toString: Function }>(key: string, defaultValue = null) {
   const cookieValue = nookies.get(undefined)[key]
