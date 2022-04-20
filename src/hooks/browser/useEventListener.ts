@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useEffect, useRef } from "react"
 
 function useEventListener<K extends keyof WindowEventMap>(
@@ -16,15 +17,9 @@ function useEventListener<K extends keyof WindowEventMap>(
   element = typeof window == "undefined" ? null : window,
   options: boolean | AddEventListenerOptions | undefined = undefined
 ) {
-  const callbackRef = useRef(listener)
-
-  useEffect(() => {
-    callbackRef.current = listener
-  }, [listener])
-
   useEffect(() => {
     if (element == null) return
-    const handler = (e: WindowEventMap[K]) => callbackRef.current(e)
+    const handler = (e: WindowEventMap[K]) => listener(e)
     element.addEventListener(eventType, handler, options)
 
     return () => element.removeEventListener(eventType, handler, options)
