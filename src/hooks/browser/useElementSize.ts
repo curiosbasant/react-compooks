@@ -5,8 +5,10 @@ export default function useElementSize<T extends HTMLElement>(ref: RefObject<T>)
 
   useEffect(() => {
     if (ref.current == null) return
-    const observer = new ResizeObserver(([entry]) => setSize(entry.contentRect))
+
+    const observer = new ResizeObserver(([entry]) => entry && setSize(entry.contentRect))
     observer.observe(ref.current)
+
     return () => observer.disconnect()
   }, [])
 
