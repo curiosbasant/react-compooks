@@ -3,7 +3,7 @@ import { useState } from "react"
 export default function useToggle(defaultValue = false) {
   const [value, setValue] = useState(defaultValue)
 
-  function toggleValue(forceSet?: boolean) {
+  function toggleValue<T extends unknown>(forceSet?: T extends boolean ? boolean : unknown) {
     typeof forceSet == "boolean" ? setValue(forceSet) : setValue((currentValue) => !currentValue)
   }
 
