@@ -1,5 +1,11 @@
 # @curiosbasant/react-compooks
 
+## 0.3.2
+
+### Patch Changes
+
+- 5ab1eda: use peer dependencies
+
 ## 0.3.1
 
 ### Patch Changes
