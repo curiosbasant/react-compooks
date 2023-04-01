@@ -1,5 +1,11 @@
 # @curiosbasant/react-compooks
 
+## 0.4.0
+
+### Minor Changes
+
+- 9f285f6: add new `usePropEvents` hook
+
 ## 0.3.2
 
 ### Patch Changes
