@@ -16,6 +16,7 @@ export { default as useFunctionalReducer, Dispatcher } from "./useFunctionalRedu
 export { default as useIsInitialRender } from "./useIsInitialRender"
 export { default as useIsMounted } from "./useIsMounted"
 export { default as useIsoMorphicEffect } from "./useIsoMorphicEffect"
+export { default as usePropEvents } from "./usePropEvents"
 export { default as useRenderCount } from "./useRenderCount"
 export { default as useToggle } from "./useToggle"
 export { default as useValidatorState } from "./useValidatorState"
